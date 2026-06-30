@@ -1,0 +1,2144 @@
+/* ============================================================
+   СБРОС И БАЗОВЫЕ СТИЛИ
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f7fa;
+}
+
+/* ============================================================
+   GIF-СЛОЙ (заставка)
+   ============================================================ */
+.hero-gif-layer {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    overflow: hidden;
+    transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+.hero-gif-layer.blurred {
+    filter: blur(6px) brightness(0.8);
+}
+
+.bg-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gif-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.hero-gif-layer.blurred .gif-overlay {
+    opacity: 1;
+}
+
+/* ============================================================
+   ЛОГОТИП ПОВЕРХ GIF
+   ============================================================ */
+.hero-logo {
+    position: absolute;
+    top: 29px;
+    left: 50%;
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    transform: translateX(-50%);
+}
+
+/* ============================================================
+   ОБЁРТКА КОНТЕНТА
+   ============================================================ */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================================
+   ИНТЕРФЕЙС (прозрачный блок с контентом)
+   ============================================================ */
+.interface-container {
+    width: 100%;
+    max-width: 1400px;
+    padding: 41px 75px 75px 75px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.interface-container.visible {
+    opacity: 1;
+}
+
+/* ============================================================
+   ГЛАВНЫЙ КОНТЕЙНЕР (main-frame)
+   ============================================================ */
+.main-frame {
+    width: 100%;
+    min-height: 600px;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    position: relative;
+}
+
+/* ============================================================
+   ОБЁРТКА ДЛЯ КОНТЕНТА (прижимает футер к низу + ЦЕНТРИРУЕМ ВСЁ)
+   ============================================================ */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    align-items: center;
+}
+
+/* ============================================================
+   ★ ГЛАВНЫЙ ЛЕЙАУТ (ДЕСКТОП) ★
+   ============================================================ */
+.bento-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    flex: 1;
+    max-width: 1290px;
+}
+
+/* ============================================================
+   ЛЕВАЯ КОЛОНКА
+   ============================================================ */
+.bento-left {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Первый ряд - флексится от левого края */
+.bento-left .bento {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+/* ============================================================
+   BENTORIGHT - обертка для skills и education (прижата вправо)
+   ============================================================ */
+.bentoright {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   ПЕРВЫЙ РЯД - флексится от левого края
+   ============================================================ */
+.bento-left .bento {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+/* ============================================================
+   ВТОРОЙ РЯД - исправлен, чтобы popular не вылезал
+   ============================================================ */
+.bento-left .bentodown {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    justify-content: space-between; /* Равномерное распределение */
+    gap: 4px;
+    width: 100%;
+    flex: 1;
+    min-width: 0; /* Важно для корректного сжатия */
+}
+
+/* ============================================================
+   ПРАВАЯ КОЛОНКА (карточка)
+   ============================================================ */
+.bento-layout > .card {
+    flex: 0 0 433px;
+    align-self: stretch;
+    height: auto;
+    min-height: 100%;
+}
+
+/* ============================================================
+   МЕНЮ (с плашкой для активного пункта, прижато к верху)
+   ============================================================ */
+.menu-column {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    width: 180px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: auto;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+}
+
+.sidebar .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 33px;
+}
+
+.sidebar .logo .svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar nav {
+    width: 100%;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Стили для пунктов меню */
+.sidebar nav ul li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 4px 14px;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    box-sizing: border-box;
+}
+
+.sidebar nav ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* Активный пункт (Обо мне) — цветная плашка со стеклом */
+.sidebar nav ul li.active {
+    background: rgba(93, 200, 215, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar nav ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    opacity: 0.7;
+}
+
+.sidebar nav ul li .svg-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   НАВЫКИ И ОБРАЗОВАНИЕ
+   ============================================================ */
+.skills, .education {
+    background: rgba(255, 255, 255, 0.71);
+    border-radius: 16px !important;
+    overflow: hidden;
+    height: 340px;
+    padding: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #919A9A;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 29px;
+    box-shadow: 3px 3px 6.5px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+/* ДЕСКТОП - SVG на всю ширину, без отступов */
+.skills img,
+.education img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 1280px */
+@media (max-width: 1280px) {
+    .skills, .education {
+        height: auto;
+        min-height: 150px;
+        width: 100%;
+        padding: 14px;
+        gap: 15px;
+    }
+
+    .skills img,
+    .education img {
+        width: calc(100% - 28px);
+        margin: 0 14px 25px 14px;
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    .skills, .education {
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+        flex: 1;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .skills img,
+    .education img {
+        width: calc(100% - 32px);
+        margin: 0 16px 28px 16px;
+    }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .skills, .education {
+        width: 100%;
+        height: auto;
+        min-height: 140px;
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .skills img,
+    .education img {
+        width: calc(100% - 28px);
+        margin: 0 14px 20px 14px;
+    }
+}
+
+/* 480px */
+@media (max-width: 480px) {
+    .skills, .education {
+        width: 100%;
+        height: auto;
+        min-height: 100px;
+        padding: 10px;
+        gap: 8px;
+        font-size: 13px;
+    }
+
+    .skills img,
+    .education img {
+        width: calc(100% - 20px);
+        margin: 0 10px 15px 10px;
+    }
+}
+
+/* ============================================================
+   ПОПУЛЯРНЫЕ КЕЙСЫ
+   ============================================================ */
+.bento-left .bentodown .popular {
+    background: rgba(255, 255, 255, 0.71);
+    border-radius: 16px !important;
+    overflow: hidden;
+    height: 282px;
+    padding: 18px 14px 14px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #919A9A;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 6.5px rgba(0, 0, 0, 0.15);
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.popular > span:first-child {
+    margin-bottom: 18px;
+    flex-shrink: 0;
+}
+
+.popular-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Теперь колонки занимают равное пространство */
+    grid-template-rows: 103px 103px;
+    gap: 4px;
+    flex: 0 0 auto;
+    width: 100%; /* Занимает всю ширину */
+}
+
+.popular-grid a {
+    display: block;
+    text-decoration: none;
+    width: 100%; /* Теперь 100% от ячейки сетки */
+    height: 103px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.popular-grid a:hover {
+    transform: scale(1.03);
+}
+
+.popular-grid .block-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1.3;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.popular-grid .block-content .number {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.popular-grid .block-content .title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.2;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Фоны для блоков */
+.danalink .block-content {
+    background-color: #8BBCC3;
+    background-image: url('../images/danalink.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    border-radius: 8px;
+    opacity: 0.82;
+}
+
+.lighthouse .block-content {
+    background-color: #8BBCC3;
+    background-image: url('../images/lighthouse.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    border-radius: 8px;
+    opacity: 0.82;
+}
+
+.coachella .block-content {
+    background-color: #8BBCC3;
+    background-image: url('../images/coachella.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    border-radius: 8px;
+    opacity: 0.82;
+}
+
+.logofolio .block-content {
+    background-color: #8BBCC3;
+    background-image: url('../images/logofolio.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    border-radius: 8px;
+    opacity: 0.82;
+}
+
+/* ============================================================
+   WORK - фиксированный размер
+   ============================================================ */
+.bento-left .bentodown .Work {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    flex: 0 0 auto;
+}
+
+.Work img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================================
+   CARD (справа)
+   ============================================================ */
+.card {
+    background: linear-gradient(135deg, #FFCAF9, #86E4F7);
+    border-radius: 16px !important;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Прижимаем всё содержимое к низу */
+    box-shadow: 3px 3px 6.5px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    position: relative;
+}
+
+.card img:first-child {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-top: auto; /* Прижимает к низу */
+}
+
+.card img:last-child {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    max-width: none;
+    z-index: 2;
+}
+
+/* ============================================================
+   ФУТЕР
+   ============================================================ */
+.footer {
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 40px;
+    padding: 10px 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.social a:hover {
+    opacity: 0.8;
+}
+
+/* ============================================================
+   ОБЩИЙ КЛАСС ДЛЯ SVG
+   ============================================================ */
+.svg-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================================
+   АДАПТАЦИЯ (планшеты 1024px)
+   ============================================================ */
+@media (max-width: 1024px) {
+    .interface-container {
+        padding: 20px;
+    }
+
+    .main-frame {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .bento-layout {
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    .bento-left {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .bento-left .bento {
+        justify-content: center;
+    }
+
+    .bentoright {
+        margin-left: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .menu-column {
+        width: 100%;
+        height: auto;
+    }
+
+    .sidebar {
+        align-items: center;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sidebar nav ul li {
+        width: auto;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .skills, .education {
+        width: 100%;
+        height: auto;
+        min-height: 200px;
+        flex: 1;
+    }
+
+    .bento-left .bentodown {
+        flex-wrap: wrap;
+        gap: 4px;
+        justify-content: center;
+    }
+
+    .bento-left .bentodown .popular {
+        flex: 0 0 auto;
+        min-width: 200px;
+        width: auto;
+        max-width: 100%;
+    }
+
+    .popular-grid {
+        grid-template-columns: 189px 189px;
+    }
+
+    .bento-left .bentodown .Work {
+        flex: 0 0 auto;
+        min-width: 200px;
+        height: auto;
+    }
+
+    .bento-layout > .card {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: none;
+        align-self: flex-start;
+        height: auto;
+        min-height: auto;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 20px;
+        font-size: 14px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .social {
+        gap: 20px;
+        justify-content: center;
+    }
+}
+
+/* ============================================================
+   АДАПТАЦИЯ (1280px) - точная копия мобильной версии
+   ============================================================ */
+@media (max-width: 1280px) {
+    .interface-container {
+        padding: 10px;
+    }
+
+    .main-frame {
+        border-radius: 20px;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .bento-left .bento {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    .bento-left .bento > * {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .bentoright {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .bento-left .bentodown {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .bento-left .bentodown .popular,
+    .bento-left .bentodown .Work {
+        width: 100% !important;
+        min-width: 0;
+        max-width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .bento-left .bentodown .popular {
+        height: auto;
+        min-height: 282px;
+        padding: 14px 10px;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .popular-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 4px;
+        flex: 1 1 auto;
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .popular-grid a {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        min-height: 90px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.2s ease;
+    }
+
+    .popular-grid a:hover {
+        transform: scale(1.03);
+    }
+
+    .popular-grid .block-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 8px 10px;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 1.3;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .popular-grid .block-content .number {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        font-size: 24px;
+        font-weight: 700;
+        opacity: 0.8;
+    }
+
+    .popular-grid .block-content .title {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 1.2;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .bento-left .bentodown .Work {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        max-width: 100%;
+        height: auto;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .bento-left .bentodown .Work img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .menu-column {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .skills, .education {
+        height: auto;
+        min-height: 150px;
+        width: 100%;
+    }
+
+    .social {
+        gap: 12px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 12px 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 5px;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card img:first-child {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .card img:last-child {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: auto;
+        max-width: none;
+        z-index: 2;
+    }
+}
+
+/* ============================================================
+   АДАПТАЦИЯ (мобильные 480px)
+   ============================================================ */
+@media (max-width: 480px) {
+    .interface-container {
+        padding: 10px;
+    }
+
+    .main-frame {
+        border-radius: 20px;
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .bento-left .bento {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+
+    .bento-left .bento > * {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .bentoright {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .bento-left .bentodown {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .bento-left .bentodown .popular,
+    .bento-left .bentodown .Work {
+        width: 100% !important;
+        min-width: 0;
+        max-width: 100%;
+        flex: 1 1 auto;
+    }
+
+    .bento-left .bentodown .popular {
+        height: auto;
+        min-height: 282px;
+        padding: 14px 10px;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .popular-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+        gap: 4px;
+        flex: 1 1 auto;
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .popular-grid a {
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        height: 100%;
+        min-height: 90px;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.2s ease;
+    }
+
+    .popular-grid a:hover {
+        transform: scale(1.03);
+    }
+
+    .popular-grid .block-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 8px 10px;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 1.3;
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .popular-grid .block-content .number {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        font-size: 24px;
+        font-weight: 700;
+        opacity: 0.8;
+    }
+
+    .popular-grid .block-content .title {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        font-weight: 300;
+        line-height: 1.2;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    .bento-left .bentodown .Work {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100% !important;
+        max-width: 100%;
+        height: auto;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    .bento-left .bentodown .Work img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .menu-column {
+        height: auto;
+        min-height: 200px;
+    }
+
+    .skills, .education {
+        height: auto;
+        min-height: 150px;
+        width: 100%;
+    }
+
+    .social {
+        gap: 12px;
+    }
+
+    .footer {
+        font-size: 12px;
+        padding: 12px 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 100%;
+        padding: 5px;
+        min-height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card img:first-child {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .card img:last-child {
+        position: absolute;
+        bottom: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: auto;
+        max-width: none;
+        z-index: 2;
+    }
+}
+
+
+
+
+/* ============================================================
+   Страница с моим портфолио кейсы
+   ============================================================ */
+.myworks {
+    background: linear-gradient(135deg, #4CBDCA, #86E4F7, #FFCAF9);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 60px;
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================
+   ГРИД-КОНТЕЙНЕР ДЛЯ МЕНЮ И ФИЛЬТРОВ (ДЕСКТОП)
+   ============================================================ */
+.menufilter {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    position: fixed;
+    left: 76px;
+    top: 60px;
+    width: 220px;
+    z-index: 9999;
+    box-sizing: border-box;
+}
+
+.menu-fixed {
+    position: static;
+    width: 100%;
+    background: rgba(255,255,255,0.33);
+    backdrop-filter: blur(10px);
+    color: rgba(255,255,255,0.33);
+    z-index: 100;
+    margin-bottom: 0;
+    padding: 16px 47px 24px 47px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    padding: 0;
+}
+
+/* ============================================================
+   ФИЛЬТРЫ (ДЕСКТОП)
+   ============================================================ */
+.filters {
+    display: grid;
+    grid-template-columns: 127px 1fr;
+    gap: 8px 22px;
+}
+
+.filters a {
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.filters a:hover {
+    opacity: 0.7;
+}
+
+.filter {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 8px 18px;
+    border: 1px solid #FFFFFF;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter.active {
+    background: #FFFFFF;
+    color: #919A9A;
+    border-color: #FFFFFF;
+}
+
+/* ============================================================
+   ОСНОВНОЙ КОНТЕНТ (ДЕСКТОП)
+   ============================================================ */
+.myworknumber {
+    width: calc(100% - 348px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 30px;
+    z-index: 1;
+    margin-left: 348px;
+    padding: 0 75px 40px 0;
+    box-sizing: border-box;
+    background: transparent;
+    min-height: auto;
+}
+
+.work-content {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.works-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+.work-item {
+    background: transparent;
+    border-radius: 25px;
+    overflow: visible;
+    width: 100%;
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: relative;
+}
+
+.work-item:hover {
+    transform: none;
+}
+
+.work-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 25px;
+}
+
+.work-info {
+    width: auto;
+    max-width: 292px;
+    height: auto;
+    padding: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 8px;
+}
+
+.work-info a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    transform-origin: right center;
+}
+
+.work-info a:hover {
+    transform: scale(1.05);
+}
+
+.work-info a img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    display: block;
+}
+
+/* ============================================================
+   ОБЕРТКА ДЛЯ ФУТЕРА
+   ============================================================ */
+.footer-wrapper {
+    padding: 0 75px 26px 75px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+/* ============================================================
+   ФУТЕР
+   ============================================================ */
+#fotterdown {
+    padding: 26px 30px;
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.27);
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #FFFFFF;
+}
+
+.myworks .works-grid {
+    gap: 20px;
+}
+
+.work-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.workresulte {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.work-item > img:first-child {
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   БУРГЕР-МЕНЮ (скрыто на десктопе)
+   ============================================================ */
+.burger-btn {
+    display: none;
+    position: fixed;
+    left: 15px;
+    top: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(134, 228, 247, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(76, 189, 202, 0.15);
+    border-radius: 12px;
+    z-index: 10000;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border: none;
+}
+
+.burger-btn .burger-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+/* ============================================================
+   АДАПТИВЫ
+   ============================================================ */
+
+/* 1280px */
+@media (max-width: 1280px) {
+    .myworknumber {
+        width: calc(100% - 260px) !important;
+        margin-left: 260px !important;
+        padding: 0 40px 40px 0 !important;
+        box-sizing: border-box !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    /* БУРГЕР-КНОПКА */
+    .burger-btn {
+        display: flex !important;
+        left: 20px;
+        top: 20px;
+        width: 48px;
+        height: 48px;
+        padding: 12px;
+        border-radius: 14px;
+    }
+
+    .burger-btn .burger-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* MENUFILTER - БУРГЕР-МЕНЮ */
+    .menufilter {
+        display: grid !important;
+        grid-template-columns: auto 1fr;
+        gap: 15px;
+        position: fixed;
+        left: 15px;
+        top: 80px;
+        width: auto;
+        min-width: 200px;
+        max-width: calc(100% - 30px);
+        background: rgba(134, 228, 247, 0.35);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px rgba(76, 189, 202, 0.25);
+        border-radius: 25px;
+        padding: 20px;
+        z-index: 9999;
+        box-sizing: border-box;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        align-items: start;
+        grid-template-rows: auto 1fr;
+    }
+
+    .menufilter.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menufilter .menu-fixed {
+        width: auto;
+        background: transparent;
+        backdrop-filter: none;
+        margin-bottom: 0;
+        padding: 0;
+        border-radius: 0;
+        color: #FFFFFF;
+    }
+
+    .menufilter .filters {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-self: end;
+        padding-bottom: 0;
+        justify-content: flex-end;
+    }
+
+    .menufilter .filters a {
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .menufilter .filters a:hover {
+        opacity: 0.7;
+    }
+
+    .menufilter .filter {
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+        padding: 8px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        white-space: nowrap;
+    }
+
+    .menufilter .filter.active {
+        background: #FFFFFF;
+        color: #919A9A;
+        border-color: #FFFFFF;
+    }
+
+    .menufilter .sidebar {
+        padding: 0;
+    }
+
+    .menufilter .sidebar .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .menufilter .sidebar .logo .svg-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .menufilter .sidebar .logo .svg-container img {
+        max-width: 80px;
+        height: auto;
+    }
+
+    .menufilter .sidebar nav {
+        width: 100%;
+    }
+
+    .menufilter .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-left: 0;
+        margin: 0;
+        list-style: none;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .menufilter .sidebar nav ul li {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 8px 12px;
+        color: #FFFFFF;
+        border-radius: 12px;
+        transition: background 0.3s ease;
+        box-sizing: border-box;
+        background: transparent;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 0;
+        min-height: 40px;
+    }
+
+    .menufilter .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .menufilter .sidebar nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #FFFFFF;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .menufilter .sidebar nav ul li .svg-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+    }
+
+    .menufilter .sidebar nav ul li .svg-container img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .myworks {
+        padding-top: 0 !important;
+    }
+
+    .myworknumber {
+        width: 100% !important;
+        max-width: 900px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 20px 20px 30px 20px !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .myworks {
+        padding-top: 0;
+    }
+
+    .burger-btn {
+        left: 15px;
+        top: 15px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        border-radius: 12px;
+    }
+
+    .burger-btn .burger-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .menufilter {
+        left: 15px;
+        top: 70px;
+        min-width: 200px;
+        max-width: calc(100% - 30px);
+        padding: 20px;
+        gap: 15px;
+        border-radius: 25px;
+    }
+
+    .menufilter .sidebar .logo {
+        margin-bottom: 16px;
+    }
+
+    .menufilter .sidebar .logo .svg-container img {
+        max-width: 70px;
+    }
+
+    .menufilter .sidebar nav ul {
+        gap: 6px;
+    }
+
+    .menufilter .sidebar nav ul li {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-height: 38px;
+    }
+
+    .menufilter .sidebar nav ul li a {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .menufilter .sidebar nav ul li .svg-container img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .menufilter .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+    }
+
+    .menufilter .filters {
+        gap: 6px;
+    }
+
+    .menufilter .filter {
+        font-size: 13px;
+        padding: 6px 14px;
+    }
+
+    .menu-fixed nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: #FFFFFF;
+        padding: 8px 0;
+    }
+
+    .filters {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+        align-self: end;
+        justify-content: flex-end;
+        padding-bottom: 0;
+    }
+
+    .works-grid {
+        gap: 20px;
+        max-width: 600px;
+        align-items: center;
+    }
+
+    .work-item {
+        max-width: 100%;
+        height: auto;
+        border-radius: 25px;
+    }
+
+    .work-item img {
+        height: auto;
+        width: 100%;
+        border-radius: 25px;
+    }
+
+    .work-info {
+        width: 100%;
+        max-width: 292px;
+        height: auto;
+        padding: 0 0 10px 0;
+        margin: 5px 0 0 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .work-info a {
+        width: 60%;
+        max-width: 250px;
+        transform-origin: right center;
+    }
+
+    .work-info a img {
+        width: 100%;
+        height: auto;
+    }
+
+    .footer-wrapper {
+        padding: 0 20px 20px 20px;
+    }
+
+    #fotterdown {
+        padding: 18px 20px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #fotterdown .social {
+        gap: 20px;
+        justify-content: center;
+    }
+
+    /* myworknumber для 768px */
+    .myworknumber {
+        width: 100% !important;
+        max-width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 20px 15px 30px 15px !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* 480px */
+@media (max-width: 480px) {
+    .burger-btn {
+        left: 10px;
+        top: 12px;
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        border-radius: 10px;
+    }
+
+    .burger-btn .burger-icon {
+        width: 22px;
+        height: 22px;
+    }
+
+    .menufilter {
+        left: 10px;
+        top: 62px;
+        min-width: 160px;
+        max-width: calc(100% - 20px);
+        padding: 16px;
+        border-radius: 20px;
+        gap: 12px;
+    }
+
+    .menufilter .sidebar .logo {
+        margin-bottom: 12px;
+    }
+
+    .menufilter .sidebar .logo .svg-container img {
+        max-width: 60px;
+    }
+
+    .menufilter .sidebar nav ul {
+        gap: 4px;
+    }
+
+    .menufilter .sidebar nav ul li {
+        padding: 6px 10px;
+        font-size: 13px;
+        min-height: 34px;
+    }
+
+    .menufilter .sidebar nav ul li a {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .menufilter .sidebar nav ul li .svg-container img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .menufilter .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+    }
+
+    .menufilter .filters {
+        gap: 6px;
+    }
+
+    .menufilter .filter {
+        font-size: 12px;
+        padding: 5px 12px;
+    }
+
+    .menu-fixed .logo .svg-container img {
+        max-width: 70px;
+        height: auto;
+    }
+
+    .menu-fixed nav ul {
+        gap: 2px;
+    }
+
+    .menu-fixed nav ul li a {
+        gap: 8px;
+        font-size: 14px;
+        padding: 6px 0;
+    }
+
+    .menu-fixed nav ul li a .svg-container img {
+        max-width: 20px;
+        height: auto;
+    }
+
+    .filters .filter {
+        font-size: 13px;
+        padding: 8px 14px;
+        border-radius: 20px;
+    }
+
+    .works-grid {
+        gap: 15px;
+    }
+
+    .work-item {
+        border-radius: 25px;
+    }
+
+    .work-item img {
+        border-radius: 25px;
+    }
+
+    .work-info {
+        width: 100%;
+        max-width: 292px;
+        height: auto;
+        padding: 0 0 8px 0;
+        margin: 5px 0 0 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .work-info a {
+        width: 60%;
+        max-width: 250px;
+        transform-origin: right center;
+    }
+
+    .work-info a img {
+        width: 100%;
+        height: auto;
+    }
+
+    .footer-wrapper {
+        padding: 0 15px 15px 15px;
+    }
+
+    #fotterdown {
+        padding: 15px 15px;
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    #fotterdown .social {
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* myworknumber для 480px */
+     .myworknumber {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding: 15px 10px 25px 10px !important;
+        gap: 15px !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+    }
+}
+/* ============================================================
+   MENU-WRAPPER (INDEX.HTML) - КАК У MENUFILTER
+   ============================================================ */
+
+/* Десктоп - menu-wrapper работает как обычно */
+.menu-wrapper {
+    display: block;
+    width: auto;
+}
+
+/* ============================================================
+   АДАПТАЦИЯ ДЛЯ MENU-WRAPPER (КАК У MENUFILTER)
+   ============================================================ */
+
+/* 1024px - как у menufilter */
+@media (max-width: 1024px) {
+    .menu-wrapper {
+        display: flex !important;
+        flex-direction: column;
+        gap: 16px;
+        position: fixed;
+        left: 20px;
+        top: 80px;
+        width: auto !important;
+        min-width: 220px;
+        max-width: calc(100% - 40px);
+        background: rgba(134, 228, 247, 0.35);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 8px 32px rgba(76, 189, 202, 0.25);
+        border-radius: 28px;
+        padding: 24px;
+        z-index: 9999;
+        box-sizing: border-box;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .menu-wrapper.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .menu-wrapper .menu-column {
+        width: 100%;
+        background: transparent;
+        backdrop-filter: none;
+        padding: 0;
+        border-radius: 0;
+        height: auto;
+        min-height: auto;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .menu-wrapper .menu-column .sidebar {
+        align-items: flex-start;
+        width: 100%;
+        padding: 0;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo .svg-container img {
+        max-width: 80px;
+        height: auto;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav {
+        width: 100%;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding-left: 0;
+        margin: 0;
+        list-style: none;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 8px 12px;
+        color: #FFFFFF;
+        border-radius: 12px;
+        transition: background 0.3s ease;
+        box-sizing: border-box;
+        background: transparent;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 0;
+        min-height: 40px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: #FFFFFF;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li .svg-container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li .svg-container img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* 768px - как у menufilter */
+@media (max-width: 768px) {
+    .menu-wrapper {
+        left: 15px;
+        top: 70px;
+        min-width: 200px;
+        max-width: calc(100% - 30px);
+        padding: 20px;
+        gap: 14px;
+        border-radius: 25px;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo {
+        margin-bottom: 16px;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo .svg-container img {
+        max-width: 70px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul {
+        gap: 6px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-height: 38px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li a {
+        font-size: 14px;
+        gap: 12px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li .svg-container img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+    }
+}
+
+/* 480px - как у menufilter */
+@media (max-width: 480px) {
+    .menu-wrapper {
+        left: 10px;
+        top: 62px;
+        min-width: 160px;
+        max-width: calc(100% - 20px);
+        padding: 16px;
+        border-radius: 20px;
+        gap: 12px;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo {
+        margin-bottom: 12px;
+    }
+
+    .menu-wrapper .menu-column .sidebar .logo .svg-container img {
+        max-width: 60px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul {
+        gap: 4px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li {
+        padding: 6px 10px;
+        font-size: 13px;
+        min-height: 34px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li a {
+        font-size: 13px;
+        gap: 10px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li .svg-container img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .menu-wrapper .menu-column .sidebar nav ul li.active {
+        background: rgba(93, 200, 215, 0.72) !important;
+    }
+}

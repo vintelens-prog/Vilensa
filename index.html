@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Стандартный фавикон (SVG или PNG 32×32) -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.svg">
+
+    <!-- Apple Touch Icon (iOS, закрепление на домашний экран) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.svg">
+
+    <!-- PWA манифест (Android, установка веб-приложения) -->
+    <link rel="manifest" href="images/favicon.svg">
+</head>
+<body>
+
+<!-- GIF заставка -->
+<div class="hero-gif-layer">
+    <img src="walk.gif" alt="Portfolio Animation" class="bg-gif">
+    <div class="gif-overlay"></div>
+</div>
+
+<!-- SVG логотип поверх гифки -->
+<div class="hero-logo">
+    <img src="images/Logo 1.svg" alt="Vilensa Hero Logo" />
+</div>
+
+<!-- Интерфейс -->
+<div class="content-wrapper">
+    <div class="interface-container fade-in-element">
+
+        <!-- Главный контейнер -->
+        <main class="main-frame">
+
+            <!-- Обёртка для контента (прижимает футер к низу) -->
+            <div class="main-content">
+
+                <!-- ИСПРАВЛЕННАЯ СТРУКТУРА BENTO -->
+                <div class="bento-layout" id="bento-layout">
+
+                    <!-- Левая колонка -->
+                    <div class="bento-left">
+
+                        <!-- Первый ряд -->
+                        <div class="bento">
+                            <!-- ОБЕРТКА ДЛЯ МЕНЮ (как на типографике, чтобы работал бургер) -->
+                            <div class="menu-wrapper">
+                                <div class="menu-column">
+                                    <aside class="sidebar">
+                                        <div class="logo">
+                                            <div class="svg-container">
+                                                <img src="images/logo 2.svg" alt="Vilensa" />
+                                            </div>
+                                        </div>
+                                        <nav>
+                                            <ul>
+                                                <li>
+                                                    <a href="index.html">
+                                                        <span class="svg-container">
+                                                            <img src="images/start.svg" alt="start" />
+                                                        </span> В начало
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="works.html">
+                                                        <span class="svg-container">
+                                                            <img src="images/work icon.svg" alt="work" />
+                                                        </span> Работы
+                                                    </a>
+                                                </li>
+                                                <li class="active">
+                                                    <span class="svg-container">
+                                                        <img src="images/me.svg" alt="me" />
+                                                    </span> Обо мне
+                                                </li>
+                                                <li>
+                                                    <a href="typography.html">
+                                                        <span class="svg-container">
+                                                            <img src="images/typegr.svg" alt="typographic" />
+                                                        </span> Типографика
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </aside>
+                                </div>
+                            </div>
+
+                            <!-- Новая обертка bentoright для skills и education -->
+                            <div class="bentoright">
+                                <div class="skills">
+                                    <span>Навыки</span>
+                                    <img src="images/skills.svg" alt="Skills" />
+                                </div>
+                                <div class="education">
+                                    <span>Образование</span>
+                                    <img src="images/Education.svg" alt="Education" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Второй ряд -->
+                        <div class="bentodown">
+                            <div class="popular">
+                                <span>Популярные кейсы</span>
+                                <div class="popular-grid">
+                                    <a href="works.html#danalink" class="danalink">
+                                        <div class="block-content">
+                                            <span class="number">01</span>
+                                            <span class="title">Интернет провайдер Danalink экосистема</span>
+                                        </div>
+                                    </a>
+                                    <a href="works.html#lighthouse" class="lighthouse">
+                                        <div class="block-content">
+                                            <span class="number">02</span>
+                                            <span class="title">Погасший маяк: визуальная экосистема</span>
+                                        </div>
+                                    </a>
+                                    <a href="works.html#coachella" class="coachella">
+                                        <div class="block-content">
+                                            <span class="number">03</span>
+                                            <span class="title">Экосистема настольной игры Coachella</span>
+                                        </div>
+                                    </a>
+                                    <a href="works.html#logofolio" class="logofolio">
+                                        <div class="block-content">
+                                            <span class="number">04</span>
+                                            <span class="title">Дизайн логотипов:10 различных кейсов</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="Work">
+                                <img src="images/keys 4.svg" alt="keys 4" />
+                            </div>
+                        </div>
+
+                    </div> <!-- /.bento-left -->
+
+                    <!-- Правая колонка (Карточка) -->
+                    <div class="card">
+                        <img src="images/Card.png" alt="Card" />
+                        <img src="images/resume.svg" alt="resume" />
+                    </div>
+
+                </div> <!-- /.bento-layout -->
+
+            </div> <!-- /.main-content -->
+
+            <!-- ФУТЕР (теперь всегда внизу) -->
+            <footer class="footer">
+                <div class="location">
+                    <span class="svg-container">
+                        <img src="images/geo icon.svg" alt="geo" />
+                    </span> Россия, Воронеж
+                </div>
+                <div class="social">
+                    Связаться со мной:
+
+                    <a href="mailto:dany98@list.ru" target="_blank">
+                        <span class="svg-container">
+                            <img src="images/mail.svg" alt="mail" />
+                        </span>
+                    </a>
+
+                    <a href="https://t.me/vilensa" target="_blank" class="social-link">
+                        <span class="svg-container">
+                            <img src="images/telega.svg" alt="telega" />
+                        </span>
+                    </a>
+
+                    <a href="https://max.ru/u/f9LHodD0cOLrRiruMlkO131Rn6DItQP4qnDaS1s_Y9Yty8_pWXYaZHBhYDg" target="_blank" class="social-link">
+                        <span class="svg-container">
+                            <img src="images/max.svg" alt="max" />
+                        </span>
+                    </a>
+
+                    <a href="https://vk.me/vilenssa" target="_blank" class="social-link">
+                        <span class="svg-container">
+                            <img src="images/VK.svg" alt="vk" />
+                        </span>
+                    </a>
+                </div>
+            </footer>
+
+        </main>
+
+    </div>
+</div>
+
+<!-- Кнопка бургер-меню (видна только на мобильных) -->
+<button class="burger-btn" id="burgerBtn">
+    <img src="images/burger-icon_open.svg" alt="Меню" class="burger-icon" />
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // ---- БУРГЕР-МЕНЮ ----
+        const burgerBtn = document.getElementById('burgerBtn');
+        const menuWrapper = document.querySelector('.menu-wrapper');
+        const burgerIcon = burgerBtn.querySelector('.burger-icon');
+
+        const burgerIconSrc = 'images/burger-icon_open.svg';
+        const closeIconSrc = 'images/burger-icon_close.svg';
+
+        // Открытие/закрытие меню
+        burgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            burgerBtn.classList.toggle('active');
+            menuWrapper.classList.toggle('active');
+
+            if (burgerBtn.classList.contains('active')) {
+                burgerIcon.src = closeIconSrc;
+            } else {
+                burgerIcon.src = burgerIconSrc;
+            }
+        });
+
+        // Закрытие при клике вне меню
+        document.addEventListener('click', function(e) {
+            if (!menuWrapper.contains(e.target) && !burgerBtn.contains(e.target)) {
+                burgerBtn.classList.remove('active');
+                menuWrapper.classList.remove('active');
+                burgerIcon.src = burgerIconSrc;
+            }
+        });
+
+        // Закрытие при клике на любую ссылку в меню
+        const menuLinks = document.querySelectorAll('.menu-wrapper a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                menuWrapper.classList.remove('active');
+                burgerIcon.src = burgerIconSrc;
+            });
+        });
+
+        // ---- АНИМАЦИЯ ПОЯВЛЕНИЯ (только для index.html) ----
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    document.querySelector('.hero-gif-layer').classList.add('blurred');
+                } else {
+                    document.querySelector('.hero-gif-layer').classList.remove('blurred');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const elements = document.querySelectorAll('.fade-in-element');
+        elements.forEach(el => observer.observe(el));
+    });
+</script>
+
+</body>
+</html>
